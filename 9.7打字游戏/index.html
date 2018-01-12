@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<style>
+    body{
+        background: url("img/4.jpg");
+    }
+    #box{
+        width: 1000px;
+        height: 640px;
+        border: 1px solid #000;
+        margin: 0 auto;
+        position: relative;
+        background: url("img/2.jpg") no-repeat center;
+        /*display: none;*/
+    }
+    img{
+        position: absolute;
+    }
+    #box .a1{
+        width: 128px;
+        height: 128px;
+        position: absolute;
+        top: 0;
+        left: -140px;
+        font-size: 24px;
+        background: url("img/123.png");
+        line-height: 110px;
+        text-align: center;
+    }
+    #box .a1 span{
+        color: #000;
+        font-size: 26px;
+    }
+    #box .a2{
+        width: 128px;
+        height: 46px;
+        background: url("img/fff.png") no-repeat;
+        background-size: 100%;
+        position: absolute;
+        top: 150px;
+        left: -140px;
+        line-height: 46px;
+        font-size: 24px;
+        text-align: center;
+    }
+    #box .a2 span{
+        color: rebeccapurple;
+        font-size: 26px;
+    }
+    #box .a3{
+        width: 128px;
+        height: 46px;
+        background: url("img/fff.png") no-repeat;
+        background-size: 100%;
+        position: absolute;
+        top: 240px;
+        left: -140px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 46px;
+    }
+    #box .a3 span{
+        color: lawngreen;
+        font-size: 26px;
+    }
+    #box .stop{
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: 0px;
+        right: -140px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 80px;
+        cursor: pointer;
+        z-index: 888;
+    }
+    #box .stop img{
+        display: block;
+        width: 120px;
+        height: 120px;
+    }
+    .zhe{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        z-index: 999;
+        background-image: url("img/5.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+</style>
+<body>
+    <div class="zhe"></div>
+    <div id="box">
+        <div class="a1">
+            HP:
+            <span id="life">10</span>
+        </div>
+        <div class="a2">
+            EX:
+            <span id="score">0</span>
+        </div>
+        <div class="a3">
+            LV:
+            <span id="pass">1</span>
+        </div>
+        <div class="stop" id="ting">
+            <img src="img/pass.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    window.onload = function () {
+        let ting=document.querySelector("#ting");
+        // console.log(ting);
+        var newgame = new Game;
+        $('.zhe').click(function () {
+            $(this).fadeOut();
+            newgame.play();
+            fun1=function(){
+                newgame.stop=!newgame.stop;
+            }
+            ting.addEventListener("click", fun1)
+        });
+    }
+</script>
