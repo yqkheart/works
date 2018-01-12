@@ -1699,7 +1699,7 @@
 //      楼层跳转
       $(`.left-nav-dhs li`).each(function (index,value) {
           $(value).click(function () {
-              $(`body`).animate({scrollTop:$(`.meilibox`).eq(index).offset().top-25})
+              $(document.documentElement).animate({scrollTop:$(`.meilibox`).eq(index).offset().top-25})
           })
       })
 //    鼠标移入变色
