@@ -1,0 +1,413 @@
+/*
+* @Author: Administrator
+* @Date:   2017-08-09 11:14:30
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-08-10 22:19:51
+*/
+@import url('base.css');
+/* 头部开始 */
+.banner-box{
+	padding: 0 0 0px;
+	position: relative;
+	text-align: center;
+}
+.character-title{
+	font-size: 200%;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.head-bottom-box{
+	width: 100px;
+	height: 50px;
+	/* background: red; */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+.head-down-box{
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: #3d3d3c;
+	border-radius: 50px 50px 0 0;
+	overflow: hidden;
+}
+.icon-jiantouxia{
+	margin-top: 2px;
+	animation: tiaodong 1s infinite ease;
+	transition: all 2s;
+	animation-fill-mode: forwards;
+	animation-direction: alternate;
+}
+@keyframes tiaodong{
+	0%{
+		transform: translateY(10px)
+	}
+	/* 30%{
+		transform: translateY(20px)
+	}
+	50%{
+		transform: translateY(-8px)
+	}
+	60%{
+		transform: translateY(-4px)
+	} */
+    80%{
+    	transform: translateY(18px)
+    }
+	100%{
+		transform: translateY(15px)
+	}
+}
+.box-box{
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.zhezhao-box{
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.banner-box{
+	width: 100%;
+	height: 550px;
+
+}
+.banner-box img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+/* 头部结束 */
+.about-section{
+	width: 100%;
+	height: auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	/* background: pink; */
+}
+.img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.aboutme b{
+	/* font-size: 13px; */
+	color: #333333;
+
+}
+.left-box{
+	padding-bottom: 15px;
+}
+.zhengwen{
+	color: #918888;
+	/* font-size: 12px; */
+	margin-top: 27px;
+	line-height: 27px;
+}
+.GRPHICE{
+	margin-top: 27px;
+}
+.jindu1{
+	width: 100%;
+	height: 10px;
+	background: #d6d6d6;
+	margin-top: 4px;
+	border-radius: 10px;
+}
+.baifenbi1 span{
+	color: #222;
+}
+.baifenbi1 span{
+    margin-left: 75%;
+}
+.jindu1a{
+	width: 0;
+	height: 100%;
+	background: #222222;
+	border-radius: 10px;
+}
+.jindu2a{
+	width: 90%;
+	height: 100%;
+	background: #222222;
+	border-radius: 10px;
+}
+/* section-service开始 */
+.section-service{
+	width: 100%;
+	height: auto;
+	padding-top: 90px;
+	padding-bottom: 90px;
+	background: #f6f6f6;
+}
+/* section-service结束 */
+.section-portfolio{
+	width: 100%;
+	height: auto;
+	padding-top: 92px;
+	padding-bottom: 60px;
+}
+.line-box{
+	width: 100%;
+	height:auto;
+	overflow: hidden;
+}
+.section-photo1 img,.section-photo2 img,.section-photo3 img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.section-photo4 img,.section-photo5 img,.section-photo6 img{
+	display: block;
+	width: 100%;
+	height: auto;
+
+}
+.section-photo5{
+	position: relative;
+
+}
+.dingwei-box{
+	position: relative;
+}
+.zhezhao{
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	opacity: 0;
+}
+.logo-box{
+	/* background: red; */
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-right: auto;
+	margin-left: auto;
+	top: 0;
+	bottom: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.zhezhao:hover .logo-box{
+	display: block;
+	background: #fff;
+	transform: rotateY(180deg);
+	transition: all 0.6s;	
+}
+.zhezhao:hover{
+	opacity: 1;
+}
+/* .iconfont icon-sousuo:hover{
+	display: block;
+} */
+.section-photo4 {
+	position: relative;
+	margin-top:-7%;
+	/* padding-top: 23px; */
+	
+}
+.section-photo6{
+	/* padding-top: 32px; */
+    position: relative;
+    margin-top:2.6%;
+}
+.row{
+	position: relative;
+	/* overflow: hidden; */
+}
+/* section-clints开始 */
+.section-clints{
+	width: 100%;
+	height: auto;
+	background: #f6f6f6;
+	padding-bottom: 90px;
+	padding-top: 90px;
+}
+.icon-box;.icon-box1{
+	padding-top: 10px;
+}
+.icon-box img,.icon-box1 img{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+@media screen and (max-width:768px){
+	.icon-box1{
+		display: none;
+	}
+	.section-photo5,.section-photo4,.section-photo6{
+		/* position: relative; */
+		margin-top:0px;
+	}
+}
+
+/* section-clints结束 */
+/* latest blogs开始 */
+.section-latest-blogs{
+	width: 100%;
+	height: auto;
+	/* background: pink; */
+	padding: 40px 0 40px;
+}
+.section-latest-photo img{
+	width: 100%;
+	display: block;
+	height: auto;
+}
+
+.load-more{
+	display: block;
+	width: 160px;
+	height: 46px;
+	border: 2px solid #000;
+	border-radius: 50px;
+	margin-top: 20px;
+	margin-left: 43%;
+	text-align: center;
+	line-height: 44px;
+	color: #000;
+	padding-bottom: 40px;
+}
+.load-more:hover{
+	background: #000;
+	color: #fff;
+}
+/* latest blogs结束 */
+/* GET IN TOUCH 开始 */
+.section-touch{
+	width: 100%;
+	height: auto;
+	background: #f6f6f6;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+.section-touch-left{
+	/* background: #fff; */
+	/* width: 100%; */
+	height: auto;
+}
+.section-touch-right{
+	/* background: #fff; */
+	/* width: 100%; */
+	height: auto; 
+}
+.section-touch-list{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	/* box-shadow: 0 0 15px 1px; */
+    background: #fff;
+    margin-bottom: 30px;
+}
+.icon-dianhua{
+	padding-bottom: 12px;
+}
+.iconfont{
+	color: #000;
+}
+.section-right-big{
+	width: 100%;
+	height: 100%;
+}
+.first-section{
+	padding: 7px 10px;
+	width: 100%;
+	height: 55px;
+	background: #fff;
+	border: none;
+	margin-bottom: 30px;
+	border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+.first-section:focus{
+	border-bottom: 2px solid #000;
+}
+.first-section:focus{
+	outline: none;
+}
+textarea{
+	width: 100%;
+	height: 173px;
+	padding: 10px;
+	border: none;
+	resize: none;
+
+}
+textarea:focus{
+	outline: none;
+	border-bottom: 2px solid #000;
+}
+.plan-box{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 80px;
+	height: 173px;
+	background: #333;
+}
+.plan-box:hover{
+	background: #fff;
+	border: 2px solid #000;
+	box-sizing: border-box;
+}
+.plan-box:hover .icon-zhifeijiicon279585{
+	color: #000;
+}
+.wenbenyu-box{
+	position: relative;
+}
+.plan-logo-box{
+	width: 30px;
+	height: 30px;
+	/* background: red; */
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.icon-zhifeijiicon279585{
+	
+	color: #fff;
+}
+/* GET IN TOUCH 结束 */
+/* 版权开始 */
+.section-banquan-box{
+	width: 100%;
+	height: auto;
+	background: #111;
+	padding: 70px 0;
+	text-align: center;
+}
+.icon-facebookicon,.icon-tuite,.icon-be,.icon-06{
+	color: #fff;
+}
+.icon-facebookicon:hover{
+	transform: scale(2) !important;
+}
+/* 版权结束 */
+
+

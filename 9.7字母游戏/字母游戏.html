@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding:0;
+        list-style: none;
+    }
+    .box{
+        width: 1000px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin:0 auto;
+        position: relative;
+        font-size: 60px;
+        color: red;
+        text-align: center;
+        line-height: 500px;
+    }
+    img{
+        position: absolute;
+    }
+    .score{
+        width: 100px;
+        height:100px;
+        border:1px solid #000000;
+        position: absolute;
+        left: -120px;
+        top: -1px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 100px;
+        color: blue;
+    }
+    .live{
+        width: 100px;
+        height:100px;
+        border:1px solid #000000;
+        position: absolute;
+        left: -120px;
+        top: 130px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 100px;
+        color: red;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="score"><b>0</b></div>
+        <div class="live"><b>10</b></div>
+    </div>
+
+</body>
+</html>
+<script>
+    /***********************原生js***********************/
+//    function Game() {
+//        this.imgs=[
+//            {zm:`A`,src:`.png`},
+//            {zm:`B`,src:`.png`},
+//            {zm:`C`,src:`.png`},
+//            {zm:`D`,src:`.png`},
+//            {zm:`E`,src:`.png`},
+//            {zm:`F`,src:`.png`},
+//            {zm:`G`,src:`.png`},
+//            {zm:`H`,src:`.png`},
+//            {zm:`I`,src:`.png`},
+//            {zm:`J`,src:`.png`},
+//            {zm:`K`,src:`.png`},
+//            {zm:`L`,src:`.png`},
+//            {zm:`L`,src:`.png`},
+//            {zm:`N`,src:`.png`},
+//            {zm:`O`,src:`.png`},
+//            {zm:`P`,src:`.png`},
+//            {zm:`Q`,src:`.png`},
+//            {zm:`R`,src:`.png`},
+//            {zm:`S`,src:`.png`},
+//            {zm:`T`,src:`.png`},
+//            {zm:`U`,src:`.png`},
+//            {zm:`V`,src:`.png`},
+//            {zm:`W`,src:`.png`},
+//            {zm:`X`,src:`.png`},
+//            {zm:`Y`,src:`.png`},
+//            {zm:`Z`,src:`.png`},
+//        ]
+//
+//        this.fragment=document.createDocumentFragment();
+//        this.box=document.querySelector(`.box`);
+//        this.current=[];
+//        this.num=3;
+//        this.width=this.box.offsetWidth-53;
+//        this.heights=this.box.offsetHeight-77;
+//        this.arr=[];
+//        this.score=document.querySelector(`.score b`)
+//        this.live=document.querySelector(`.live b`)
+//    }
+//    Game.prototype={
+//        play:function () {
+//            this.getimg();
+//            this.check();
+//            this.imgMove();
+//            this.onKeyup();
+//        },
+////        获取一个
+//        getone:function () {
+//            var that=this;
+//            var img=document.createElement(`img`);
+//            that.arr.push(img)
+//            do {
+//                var ran=Math.floor(Math.random()*this.imgs.length);
+//                var obj=this.imgs[ran];
+//            }while(that.check(obj));
+//            img.src=`AZ/${obj.zm}${obj.src}`
+//            that.current.push(obj)
+//            that.fragment.appendChild(img);
+//            var left=Math.floor(Math.random()*that.width);
+////                console.log(left)
+//            img.style.left=left+`px`;
+//            img.speed=Math.floor(Math.random()*7)+1;    //自定义属性
+//            that.box.appendChild(that.fragment);
+//
+//        },
+//        check:function (obj) {
+//            return this.current.some(function (value) {
+//                return value==obj;
+//            })
+//        },
+//        //获取三个字母并且在页面中展示
+//        getimg:function () {
+//            var that=this;
+//            for(i=0;i<that.num;i++){
+//                var img=document.createElement(`img`);
+//                do {
+//                    var ran=Math.floor(Math.random()*this.imgs.length);
+//                    var obj=this.imgs[ran];
+//                }while(that.check(obj));
+//                img.src=`AZ/${obj.zm}${obj.src}`
+//                that.current.push(obj)
+//                that.fragment.appendChild(img);
+//                var left=Math.floor(Math.random()*that.width);
+////                console.log(left)
+//                img.style.left=left+`px`;
+//                img.speed=Math.floor(Math.random()*7)+1;    //自定义属性
+//                that.arr.push(img)
+//            }
+//            that.box.appendChild(that.fragment);
+//        },
+//        //字母动起来
+//        imgMove:function () {
+//            var that=this;
+//            var t=setInterval(function () {
+//                that.arr.forEach(function (value,index) {
+//                    var newtop=value.offsetTop;
+//                    if (newtop>that.heights){
+//                        that.box.removeChild(value)
+//                        that.arr.splice(index,1)
+//                        that.current.splice(index,1)
+//                        if (that.live.innerHTML==0){
+//                            clearInterval(t)
+//                            alert(`game over！`)
+//                            return;
+//                        }else{
+//                            that.live.innerHTML--;
+//                            that.getone();
+//                        }
+//                    }else{
+//                        value.style.top=value.offsetTop+value.speed+`px` //应用自定义属性
+//                    }
+//                })
+//            },30)
+//        },
+        //添加键盘事件
+//        onKeyup:function () {
+//            var that=this;
+//            document.onkeyup=function (e) {
+//                var key=e.keyCode;
+////                console.log(key)
+//                var n=String.fromCharCode(key);
+////                console.log(n)
+////                console.log(that.current)
+//                that.current.forEach(function (value,index) {
+//                    if (value.zm==n){
+//                        var imgs=document.querySelectorAll(`img`)
+//                        that.box.removeChild(imgs[index]);
+//                        that.current.splice(index,1)
+//                        that.arr.splice(index,1)
+//                        that.getone();
+//                        that.score.innerHTML++;
+//                    }
+//                })
+//            }
+//        }
+//    }
+//    var game=new Game();
+//    game.play();
+
+    /****************jQuery**********************/
+    function Game() {
+        this.imgs=[
+            {zm:`A`,src:`.png`},
+            {zm:`B`,src:`.png`},
+            {zm:`C`,src:`.png`},
+            {zm:`D`,src:`.png`},
+            {zm:`E`,src:`.png`},
+            {zm:`F`,src:`.png`},
+            {zm:`G`,src:`.png`},
+            {zm:`H`,src:`.png`},
+            {zm:`I`,src:`.png`},
+            {zm:`J`,src:`.png`},
+            {zm:`K`,src:`.png`},
+            {zm:`L`,src:`.png`},
+            {zm:`L`,src:`.png`},
+            {zm:`N`,src:`.png`},
+            {zm:`O`,src:`.png`},
+            {zm:`P`,src:`.png`},
+            {zm:`Q`,src:`.png`},
+            {zm:`R`,src:`.png`},
+            {zm:`S`,src:`.png`},
+            {zm:`T`,src:`.png`},
+            {zm:`U`,src:`.png`},
+            {zm:`V`,src:`.png`},
+            {zm:`W`,src:`.png`},
+            {zm:`X`,src:`.png`},
+            {zm:`Y`,src:`.png`},
+            {zm:`Z`,src:`.png`},
+        ];
+        this.num=3;
+        this.current=[];
+        this.arr=[];
+        this.width=$(`.box`).width()-53;
+        this.heights=$(`.box`).height()-77;
+//        console.log(this.heights)
+        this.speed=2;
+    }
+    Game.prototype={
+        play:function () {
+            this.getimg();
+            this.imgMove();
+            this.onKeyup();
+        },
+        check:function (obj) {
+            return this.current.some(function (value) {
+                return value==obj;
+            })
+        },
+        //获取一个
+        getone:function () {
+            var that=this;
+            var img=$(`<img>`);
+            do {
+                var ran=Math.floor(Math.random()*this.imgs.length);
+                var obj=this.imgs[ran];
+            }while(that.check(obj));
+            img=$(`<img src="AZ/${obj.zm}${obj.src}">`);
+            $(`.box`).append($(img))
+            that.current.push(obj)
+            var left=Math.floor(Math.random()*that.width)
+            $(img).css(`left`,left+`px`)
+//                img.style.left=left+`px`;
+//                img.speed=Math.floor(Math.random()*7)+1;    //自定义属性
+            that.arr.push(img)
+        },
+        //获取三个并且使其在页面中展示
+        getimg:function () {
+            var that=this;
+            for(var i=0;i<that.num;i++){
+                var img=$(`<img>`);
+                do {
+                    var ran=Math.floor(Math.random()*this.imgs.length);
+                    var obj=this.imgs[ran];
+                }while(that.check(obj));
+                img=$(`<img src="AZ/${obj.zm}${obj.src}">`);
+                $(`.box`).append($(img))
+                that.current.push(obj)
+                var left=Math.floor(Math.random()*that.width)
+                $(img).css(`left`,left+`px`)
+//                img.style.left=left+`px`;
+                that.arr.push(img)
+            }
+        },
+        //动起来
+        imgMove:function () {
+            var that=this;
+            var t=setInterval(function () {
+                that.arr.forEach(function (value,index) {
+                    var newtop=$(value).offset().top
+//                    console.log(newtop)
+                    if (newtop>that.heights){
+//                        console.log(value)
+                        value.remove();
+                        that.arr.splice(index,1)
+                        that.current.splice(index,1)
+                        if ($(`.live b`).text()==0){
+                            clearInterval(t)
+                            alert(`game over！`)
+                            return;
+                        }else{
+                            $(`.live b`).html($(`.live b`).html()-1);
+                            that.getone();
+                        }
+                    }else{
+                        $(value).css({top:$(value).offset().top+that.speed+`px`})
+                    }
+                })
+            },30)
+        },
+        //添加键盘事件
+        onKeyup:function () {
+            var that=this;
+            $(`body`).keyup(function (e) {
+                var key=e.keyCode;
+//                console.log(key)
+                var n=String.fromCharCode(key);
+//                console.log(n)
+//                console.log(that.current)
+                that.current.forEach(function (value,index) {
+                    if (value.zm==n){
+                        $(`img`).eq(index).remove();
+                        that.current.splice(index,1)
+                        that.arr.splice(index,1)
+                        that.getone();
+                        $(`.score b`).text(Number($(`.score b`).text())+1);
+//                        that.score.innerHTML++;
+                    }
+                })
+            })
+        }
+    }
+    var game=new Game();
+    game.play();
+</script>

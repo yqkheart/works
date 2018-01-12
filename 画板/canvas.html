@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    canvas{
+        border: 1px solid #000000;
+    }
+</style>
+<body>
+    <canvas width="1200" height="400"></canvas>
+    <br>
+    <button>后退</button>
+    <input type="color">
+    <button type=`button` id="drawline">画线</button>
+    <button type=`button` id="drawstrokeRect">画矩形框</button>
+    <button type=`button` id="drawfillRect">画矩形</button>
+    <button type=`button` id="drawdian">画点</button>
+    <input type="text" id="n" value="3"><span>边形</span>
+    <button type=`button` id="drawstrokePoly">画多边形框</button>
+    <button type=`button` id="drawfillPoly">画多边形</button>
+    <button type="button" id="drawCircleLiner">画镜像渐变圆</button>
+    <button type="button" id="drawFillCircle">画实心圆</button>
+    <button type="button" id="drawStrokeCircle">画空心圆</button>
+    <button type="button" id="drawFillLiner">画矩形渐变</button>
+    <script>
+        var canvas=document.querySelector(`canvas`);
+        var paint=canvas.getContext(`2d`);
+        var button=document.querySelector(`button`);
+        var funbtn=document.querySelectorAll(`button[id]`);
+        var nobj=document.querySelector(`#n`);
+
+        var arr=[];
+        var type=`drawline`;
+        var color=`#000`;
+        var n=3;
+        nobj.onchange=function () {
+            n=this.value
+        }
+
+        funbtn.forEach(function (value) {
+            value.onclick=function () {
+                type=value.id
+            }
+        })
+        var objcolor = document.querySelector(`input[type=color]`);
+        objcolor.onchange=function () {
+            color=this.value;
+        }
+               //加入图片
+//        var img=new Image();
+//        img.src=`2017-09-12_195752.png`;
+//        paint.drawImage(img,0,0);
+
+        button.onclick=function () {
+            if (arr.length!=1){
+                arr.pop();
+                var imgdata=arr[arr.length-1];
+                paint.putImageData(imgdata,0,0);
+            }else{
+                alert(`stop!`)
+                paint.clearRect(0,0,canvas.width,canvas.height)
+                arr.pop();
+                return;
+            }
+        }
+
+        var img=paint.getImageData(0,0,canvas.width,canvas.height);
+        canvas.onmousedown=function (e) {
+            var cx = e.offsetX;
+            var cy = e.offsetY;
+            paint.moveTo(cx,cy);
+            canvas.onmousemove=function (e) {
+                var nx = e.offsetX;
+                var ny = e.offsetY;
+                paint.clearRect(0,0,canvas.width,canvas.height)
+//                paint.putImageData(img,0,0)
+                if (arr.length>=1){
+                    var imgdata=arr[arr.length-1];
+                    paint.putImageData(imgdata,0,0)
+                }
+
+                if (type==`drawline`){
+                    paint.beginPath();
+                    paint.moveTo(cx,cy);
+                    paint.lineTo(nx,ny);
+                    paint.strokeStyle=color;
+                    paint.stroke();
+                }else if (type==`drawstrokeRect`){
+                    paint.strokeStyle=color;
+                    paint.strokeRect(cx,cy,nx-cx,ny-cy);
+                }else if (type==`drawfillRect`){
+                    paint.fillStyle=color;
+                    paint.fillRect(cx,cy,nx-cx,ny-cy);
+                }else if (type==`drawdian`){
+                    paint.lineTo(nx,ny);
+                    paint.strokeStyle=color;
+                    paint.stroke();
+                }else if (type==`drawstrokePoly`){
+                    var ran=360/n;
+                    var r=Math.sqrt(Math.pow(nx-cx,2)+Math.pow(ny-cy,2))
+                    paint.beginPath();
+                    for(var i=0;i<n;i++){
+                        paint.lineTo(cx+Math.cos((i*ran+45)*Math.PI/180)*r,cy+Math.sin((i*ran+45)*Math.PI/180)*r)
+                    }
+                    paint.closePath();
+                    paint.stroke();
+                }else if (type==`drawfillPoly`){
+                    var ran=360/n;
+                    var r=Math.sqrt(Math.pow(nx-cx,2)+Math.pow(ny-cy,2))
+                    paint.beginPath();
+                    for(var i=0;i<n;i++){
+                        paint.lineTo(cx+Math.cos((i*ran+45)*Math.PI/180)*r,cy+Math.sin((i*ran+45)*Math.PI/180)*r)
+                    }
+                    paint.closePath();
+                    paint.fill();
+                }else if (type=='drawCircleLiner'){
+                    var r=Math.sqrt(Math.pow(nx-cx,2)+Math.pow(ny-cy,2));
+                    var circle=paint.createRadialGradient(cx,cy,0,cx,cy,r);
+                    circle.addColorStop(0,'red');
+                    circle.addColorStop(.2,'orange');
+                    circle.addColorStop(.4,'yellow');
+                    circle.addColorStop(.6,'green');
+                    circle.addColorStop(.8,'blue');
+                    circle.addColorStop(1,'purple');
+                    paint.fillStyle=circle;
+                    paint.beginPath();
+                    paint.arc(cx,cy,r,0,Math.PI*2);
+                    paint.fill();
+                }else if (type=='drawFillCircle'){
+                    var r=Math.sqrt(Math.pow(nx-cx,2)+Math.pow(ny-cy,2));
+                    paint.beginPath();
+                    paint.arc(cx,cy,r,0,Math.PI*2);
+                    paint.fill();
+                    paint.fillStyle=color;
+                }else if (type=='drawStrokeCircle'){
+                    var r=Math.sqrt(Math.pow(nx-cx,2)+Math.pow(ny-cy,2));
+                    paint.beginPath();
+                    paint.arc(cx,cy,r,0,Math.PI*2);
+                    paint.stroke();
+                    paint.strokeStyle=color;
+                }else if(type=='drawFillLiner') {
+                    var liner = paint.createLinearGradient(cx, cy, nx, ny);
+                    liner.addColorStop(0, 'red');
+                    liner.addColorStop(.2, 'orange');
+                    liner.addColorStop(.4, 'yellow');
+                    liner.addColorStop(.6, 'green');
+                    liner.addColorStop(.8, 'blue');
+                    liner.addColorStop(1, 'purple');
+                    paint.fillStyle = liner;
+                    paint.fillRect(cx, cy, nx - cx, ny - cy);
+                }
+                canvas.onmouseup=function () {
+                    img=paint.getImageData(0,0,canvas.width,canvas.height)
+                    arr.push(img)
+//                    console.log(arr)
+                    canvas.onmousemove=null;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

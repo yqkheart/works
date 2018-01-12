@@ -1,0 +1,279 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+header{
+    width: 100%;
+    height:calc(100vh);
+    background: red;
+}
+/*固定导航*/
+.personBox{
+    width: 23%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5f6d7e;
+    color: white;
+    float: left;
+}
+.topBox{
+    width: 100%;
+    height: 50%;
+    background:#5F6D7E;
+    padding:40px;
+}
+.headPhotoBox{
+    width:150px;
+    height: 150px;
+    border:4px solid #ffffff;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.bottomBox{
+    width: 100%;
+    height: 50%;
+    /*background: green;*/
+    /*margin-top: 30px;*/
+    padding: 10px 0;
+}
+.h3Font{
+    margin-bottom: 5px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+.bottomBox li{
+    width: 100%;
+    height: 25%;
+    /*background: green;*/
+    font-size: 100%;
+    padding: 20px;
+    padding-left: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    padding-left: 40px;
+}
+.bottomBox li:first-child{
+    background: #495461;
+}
+.one{
+    display: inline;
+    margin-right: 10px;
+}
+/*第二个固定导航*/
+.personBox2{
+    width: 100%;
+    /*height: 354px;*/
+    background: #5F6D7E;
+    display: none;
+}
+.topBox2{
+    width: 100%;
+    height: 160px;
+    /*background: red;*/
+    padding: 5% 15%;
+}
+.bottomBox2{
+    width: 90%;
+    height: 80px;
+    background: #6CC0F7;
+    margin:0 auto;
+    margin-top: 14px;
+    position: relative;
+    /*display: none;*/
+}
+.menu{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    color: #ffffff;
+    cursor: pointer;
+}
+.headPhotoBoxa{
+    width:92px;
+    height: 92px;
+    border:4px solid #ffffff;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    float: left;
+    /*display: inline-block;*/
+}
+/*右侧导航*/
+.right-box{
+    /*padding: 260px 80px;*/
+    /*position: relative;*/
+    z-index: 2;
+    float: right;
+    width:77%;
+}
+.bannerBox{
+    width: 100%;
+    height: calc(100vh);
+    /*background: yellow;*/
+
+}
+/*右侧banner以下*/
+.mainRight{
+    width:77%;
+    height: auto;
+    float: right;
+    /*background: yellow;*/
+}
+.paddingBox{
+    padding:0 80px;
+}
+.aboutBox{
+    padding-top: 80px;
+}
+.aboutBoxa{
+    padding-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.titleBox{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+.imageBox{
+    overflow: hidden;
+    border: 4px solid #dddddd;
+    margin-bottom: 40px;
+}
+.PcharacterBox{
+    font-size: 100%;
+    color: #000000;
+    line-height: 30px;
+}
+.hr{
+    width: 100%;
+    height: 4px;
+    background: #dddddd;
+    margin-top: 40px;
+    position: relative;
+    z-index: 4;
+}
+.imgBox{
+    margin-top: 40px;
+}
+.first{
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.prjectItem{
+    margin-bottom: 2px;
+    position: relative;
+}
+.coverBox{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    top:10px;
+    left: 0px;
+    padding: 30px;
+    opacity: 0;
+    transition: all 1s;
+}
+.firstRow{
+    display: block;
+    color: #fffde1;
+    font-size: 17px;
+    padding-top: 50%;
+}
+.secondRow{
+    color: #fffde1;
+    font-size: 14px;
+    padding-top: 1%;
+}
+.prjectItem:hover .coverBox{
+    opacity: 1;
+    transform: translateY(-10px);
+}
+/*Talk with me*/
+.inputBox{
+    width: 33.333%;
+    height: 45px;
+    margin-top: 40px;
+    display: inline-block;
+}
+.inputBoxs{
+    width: 600px;
+    height: 150px;
+    margin-top: 40px;
+}
+.submitBox2{
+    padding:12px;
+    font-size: 15px;
+    color: #5F6D7E;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-left: 15px;
+}
+.banquan{
+    width: 100%;
+    height: 104px;
+    /*background: red;*/
+}
+.textCenter{
+    line-height: 104px;
+    text-align: center;
+}
+.xiala{
+    width: 100%;
+    height: 300px;
+    background: #5F6D7E;
+    float: left;
+    display: none;
+    padding:30px 44%;
+    padding-right: 0;
+}
+.xiala li{
+    width:100%;
+    height: 25%;
+    color: #ffffff;
+    cursor: pointer;
+}
+.commit{
+    display: inline-block;
+    padding-right: 10px;
+}
+textarea{
+    resize: none;
+    outline: none;
+}
+input{
+    outline:none;
+}
+@media screen and (max-width:922px){
+    .personBox{
+        display: none;
+    }
+    .personBox2{
+        display: block;
+    }
+    .right-box{
+        width: 100%;
+    }
+    .mainRight{
+        width: 100%;
+    }
+}
+

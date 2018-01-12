@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div{
+        width: 100%;
+        height: 200px;
+        background: red;
+        position: absolute;
+        left: 0;
+        top: 0px;
+    }
+    .active{
+        transition: left 1s;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html>
+<script>
+    var width=document.documentElement.clientWidth
+    console.log(width)
+    var div=document.querySelector(`div`);
+    var left=div.offsetLeft
+//    console.log(left);
+    div.addEventListener(`touchstart`,function (e) {
+        this.classList.remove(`active`)
+        var val=e.changedTouches;
+        var oldleft=Math.floor(val[0].clientX);
+        div.addEventListener(`touchmove`,function (e) {
+            var vas=e.changedTouches;
+            var centerleft=Math.floor(vas[0].clientX);
+            var newleft=centerleft-oldleft+left;
+            console.log(newleft)
+            div.style.left=div.style.left=newleft+`px`;
+            div.addEventListener(`touchend`,function () {
+                this.classList.add(`active`)
+                if (newleft<-300){
+                    div.style.left=`-100%`;
+                }else{
+                    div.style.left=`0`
+                }
+            })
+
+        })
+    })
+</script>

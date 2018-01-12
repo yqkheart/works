@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        list-style: none;
+    }
+    .box{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        margin: 0 auto;
+        /* background: green; */
+    }
+    ul{
+        width: 600px;
+        height: 600px;
+        position: absolute;
+        z-index: 10;
+    }
+    ul img{
+        display: block;
+        width: 100%;
+        height:100%;
+    }
+
+    .box div{
+        width: 30px;
+        height:30px;
+        /*border:1px solid #000000;*/
+        box-sizing: border-box;
+        float: left;
+        border-radius: 50%;
+    }
+    .she{
+        background: pink;
+    }
+    .food{
+        background:gold;
+    }
+</style>
+
+<body>
+<div class="box">
+    <ul><img src="game.png" alt=""></ul>
+</div>
+</body>
+</html>
+<script>
+    /*****************构建400个div***************/
+//    var str="";
+//    for(i=0;i<20;i++){
+//        for(j=0;j<20;j++){
+//            str+=`<div id='c${j}-${i}'></div>`
+//        }
+//    }
+//    document.querySelector(`.box`).innerHTML=str;
+//    /*****************构建400个div完成***************/
+//    /*****************构建贪吃蛇***************/
+//    var she=[
+//        {x:0,y:0},
+//        {x:1,y:0},
+//        {x:2,y:0}
+//    ]
+//    she.forEach(function (value, index) {
+//        document.querySelector(`#c${value.x}-${value.y}`).classList.add(`she`)
+//    })
+//    /*****************构建贪吃蛇完成***************/
+//    /*****************构建食物***************/
+//    var food=getFood();
+//    function getFood() {
+//        var x=(Math.random()*20   >>> 0);
+//        var y=(Math.random()*20   >>> 0);
+//        document.querySelector(`#c${x}-${y}`).classList.add(`food`);
+//        return {x:x,y:y}
+//    }
+//    /*****************构建食物完成***************/
+//    /*****************蛇动起来***************/
+//    function check(a, b) {
+//        return she.some(function (value) {
+//            return value.x==a&&value.y==b  ;        // 检测是否在内部
+//        })
+//    }
+//    var stop=true;
+//    function sheMove() {
+//        if (stop){
+//            var oldhead=she[she.length-1];
+//            var newhead;
+//            switch (co){
+//                case 37:newhead={x:oldhead.x-1,y:oldhead.y};
+//                    break;
+//                case 38:newhead={x:oldhead.x,y:oldhead.y-1};
+//                    break;
+//                case 39:newhead={x:oldhead.x+1,y:oldhead.y};
+//                    break;
+//                case 40:newhead={x:oldhead.x,y:oldhead.y+1};
+//                    break;
+//            }
+//
+//            var newheadobj=document.querySelector(`#c${newhead.x}-${newhead.y}`);
+//            if (newheadobj==null||check(newhead.x,newhead.y)){
+//                alert(`游戏结束，恭喜您获得了${she.length-3}分！`);
+//                clearInterval(t);
+//                return;
+//            }
+//            newheadobj.className=`she`;
+//            she.push(newhead);
+//
+//            if (newhead.x==food.x && newhead.y==food.y){
+//                food=getFood();
+//            }else{
+//                var end=she.shift();
+//                var endobj=document.querySelector(`#c${end.x}-${end.y}`);
+//                endobj.classList.remove(`she`)
+//            }
+//        }
+//
+//    }
+//    var t=setInterval(sheMove,200)
+//    /*****************创建一个键盘事件***************/
+//    var co=39;
+//    document.onkeyup=function (e) {
+//        var col=e.keyCode;
+//        if (col<=40 &&col>=37 && Math.abs(co-col) != 2){
+//            co=col;
+//        }else if (col==13){
+//            stop=!stop
+//        }
+//    }
+
+
+
+
+    function Game() {
+        this.she=[
+            {x:0,y:0},
+            {x:1,y:0},
+            {x:2,y:0}
+        ];
+        this.food={};
+        this.stop=true;
+        this.co=39;
+    }
+
+    Game.prototype={
+        play:function () {
+            this.drawview();
+            this.getSnake();
+            this.getFood();
+            this.sheMove();
+            this.check();
+            this.onKeyup();
+        },
+        drawview:function () {
+            var str="";
+            for(i=0;i<20;i++){
+                for(j=0;j<20;j++){
+                    str+=`<div id='c${j}-${i}'></div>`
+                }
+            }
+            document.querySelector(`.box`).innerHTML=str;
+        },
+        getSnake:function () {
+            this.she.forEach(function (value, index) {
+                document.querySelector(`#c${value.x}-${value.y}`).classList.add(`she`)
+            })
+        },
+        getFood:function () {
+             var x=(Math.random()*20   >>> 0);
+             var y=(Math.random()*20   >>> 0);
+             document.querySelector(`#c${x}-${y}`).classList.add(`food`);
+             this.food={x:x,y:y}
+
+        },
+        check:function (a,b) {
+            var that=this;
+            return that.she.some(function (value) {
+                return value.x==a&&value.y==b  ;        // 检测是否在内部
+            })
+        },
+        sheMove:function () {
+            var that=this;
+            var t=setInterval(function () {
+                if (that.stop){
+                    var oldhead=that.she[that.she.length-1];
+                    var newhead;
+                    switch (that.co){
+                        case 37:newhead={x:oldhead.x-1,y:oldhead.y};
+                            break;
+                        case 38:newhead={x:oldhead.x,y:oldhead.y-1};
+                            break;
+                        case 39:newhead={x:oldhead.x+1,y:oldhead.y};
+                            break;
+                        case 40:newhead={x:oldhead.x,y:oldhead.y+1};
+                            break;
+                    }
+
+                    var newheadobj=document.querySelector(`#c${newhead.x}-${newhead.y}`);
+                    if (newheadobj==null||that.check(newhead.x,newhead.y)){
+                        alert(`游戏结束，恭喜您获得了${that.she.length-3}分！`);
+                        clearInterval(t);
+                        return;
+                    }
+                    newheadobj.className=`she`;
+                    that.she.push(newhead);
+
+                    if (newhead.x==that.food.x && newhead.y==that.food.y){
+                        that.getFood();
+                    }else{
+                        var end=that.she.shift();
+                        var endobj=document.querySelector(`#c${end.x}-${end.y}`);
+                        endobj.classList.remove(`she`)
+                    }
+                }
+            },200)
+        },
+        onKeyup:function () {
+            var that=this;
+            document.onkeyup=function (e) {
+                var col=e.keyCode;
+                if (col<=40 &&col>=37 && Math.abs(that.co-col) != 2){
+                    that.co=col;
+                }else if (col==32){
+                    that.stop=!that.stop
+                }
+            }
+        }
+    }
+    var game=new Game();
+    game.play()
+
+
+
+
+    /*****************蛇动起来完成***************/
+</script>

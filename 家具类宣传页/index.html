@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.fullpage.js"></script>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .fp-controlArrow{
+        display: none;
+    }
+    .imgBox{
+        width: 600px;
+        height: 280px;
+        z-index: 2000;
+        position: absolute;
+        top: 0;
+        bottom:0;
+        margin-bottom: auto;
+        margin-top: auto;
+        left: 0;
+        transition: all 1s;
+    }
+    .active .imgBox{
+        transform: translateX(25%);
+        transition: all 1s;
+    }
+    .imgBoxs{
+        width:100%;
+        height: 100%;position: absolute;left: 0px;top: 0px;
+        transform: scale(0);
+        transition: all 1s;
+    }
+    .active .imgBoxs{
+        transform: scale(1);
+        transition: all 1s;
+    }
+    .rightBox{
+        width: 500px;
+        height: 500px;
+        /*background: red;*/
+        position: absolute;
+        right: 7%;
+        bottom: 0;
+        top: 0px;
+        margin-bottom: auto;
+        margin-top: auto;
+        transform: scale(0);
+        transition: all 1s;
+    }
+    .active .rightBox{
+        transform: scale(1);
+        transition: all 1s;
+    }
+    .titleBox{
+        margin-bottom: 0px;
+    }
+   /*.slide:hover{*/
+       /*transform: scale(1.05);*/
+       /*transition: all 1s;*/
+   /*}*/
+    .image1{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:-100%;
+        left:0;
+        transition: all 1s;
+    }
+    .threeBox{
+        width: 90%;
+        height: 375px;
+        /*background: red;*/
+        position: absolute;
+        top: 200px;
+        left: 5%;
+        display: flex;
+        justify-content: space-between;
+        padding:0 10px;
+    }
+    .box1{
+        width: 30%;
+        height: 100%;
+        /*background: blue;*/
+        position: relative;
+        /*top: 5%;*/
+        /*left:0;*/
+        transform: scale(0);
+        transition: all 1s;
+    }
+    .box1top{
+        width: 100%;
+        height: 75%;
+        /*background: yellow;*/
+    }
+    .box1bottom{
+        width: 0%;
+        height: 25%;
+        background: #00C0FF;
+    }
+    .product{
+        position: absolute;
+        top: 20%;
+        left: 5%;
+        z-index: 1000;
+    }
+    .active .add2{
+        transform: scale(1);
+        transition: all 1s;
+    }
+    .active .add1{
+        transform: scale(1);
+        transition: all 1s;
+    }
+    .active .add3{
+        transform: scale(1);
+        transition: all 1s;
+    }
+    .wel{
+        /*display: inline;*/
+        width: 100px;
+        height: 50px;
+        border-radius: 10px;
+        background: #00C0FF;
+        position: absolute;
+        top: 400px;
+        left: 11.5%;
+        /*right: 0;*/
+        /*margin-right: auto;*/
+        /*margin-left: auto;*/
+        font-size: 27px;
+        color: #ffffff;
+        text-align: center;
+        padding-top: 10px;
+        /*opacity: 1;*/
+        z-index: 10000;
+        transition: all 1s;
+    }
+    .active .image1{
+        transform: translateY(100%);
+        transition: all 1s;
+    }
+    .titleBox1{
+        width: 50px;
+        height: 50px;
+        white-space: nowrap;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        font-size: 30px;
+    }
+    .contact{
+        position: absolute;
+        top: 25%;
+        left: 10%;
+        font-size: 20px;
+    }
+    .mess{
+        width: 55%;
+        height: 40%;
+        /*background: red;*/
+        position: absolute;
+        top: 35%;
+        left: 10%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .inputs{
+        width: 30%;
+        height: 30%;
+        /*background: blue;*/
+        margin-top: 3%;
+    }
+    input:focus{
+        outline: none;
+    }
+    .tijiao{
+        width: 100px;
+        height: 25px;
+        background: #00bfbf;
+        position: absolute;
+        top: 80%;
+        left: 10%;
+        font-size: 20px;
+        color: #fffdef;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="section">
+        <div class="slide"><img src="img/1492673421.jpg" alt=""></div>
+        <div class="slide"><img src="img/1492672866.jpg" alt=""></div>
+        <div class="slide"><img src="img/1492672626.jpg" alt=""></div>
+        <div class="slide"><img src="img/1496743416.jpg" alt=""></div>
+    </div>
+    <div class="section">
+        <div class="product"><h2>产品</h2></div>
+        <div class="image1"><img src="img/1492587725.png" alt=""></div>
+        <div class="threeBox">
+            <div class="box1 add1">
+                <div class="box1top"><img src="img/1496742638.jpg" alt=""></div>
+                <div class="box1bottom m1">
+                    <div style="position: absolute;left: 0;top: 85%;color: #5E5E5E">穿戴式遮阳帽</div>
+                </div>
+            </div>
+            <div class="box1 add2">
+                <div class="box1top"><img src="img/1507349540.jpg" alt=""></div>
+                <div class="box1bottom m2">
+                    <div style="position: absolute;left: 0;top: 85%;color: #5E5E5E">暖人被窝</div>
+                </div>
+            </div>
+            <div class="box1 add3">
+                <div class="box1top"><img src="img/1496739464.jpg" alt=""></div>
+                <div class="box1bottom m3">
+                    <div style="position: absolute;left: 0;top: 85%;color: #5E5E5E">百搭风情帽</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="imgBox"><img src="img/1492584435.png" alt=""></div>
+        <div class="imgBoxs"><img src="img/1492584448.png" alt=""></div>
+        <div class="rightBox">
+            <div class="titleBox"><h2 style="color: #4B4B4B">关于</h2></div>
+            <div><h3 style="color: #A8A8A8">ABOUT US</h3></div>
+            <div><h3 style="margin-top: 50px">公司简介</h3></div>
+            <div style="width: 100%;height: 1px;background: #DDDDDD;margin-top: 20px"></div>
+            <p style="margin-top: 10px;line-height: 25px;color: #888888">&nbsp;  绍兴市上虞金雅来家居用品有限公司位于浙江省绍兴市上虞高速出口，距杭州国际机场65公里，杭甬高速公路中间段，交通便利，绍兴市上虞是中国青瓷发源地，也是著名的黄酒之乡，区域内有多处风景名胜，一年四季分明，气候宜人。&nbsp; &nbsp; &nbsp; 绍兴市上虞金雅来家居用品有限公司是一家从事家居用品，户外用品，旅游用品研发，设计，制作的创新型企业，致力于</p>
+        </div>
+    </div>
+    <div class="section">
+        <img src="img/last.png" alt="">
+        <div class="titleBox1">联系</div>
+        <div class="contact">CONTACT</div>
+        <div class="mess">
+            <div class="inputs"><input type="text" placeholder="姓名" style="border: none;border-bottom: 1px solid #D5D5D5;width: 100%;height: 100%;background: #F5F4F4"></div>
+            <div class="inputs"><input type="text" placeholder="电话" style="border: none;border-bottom: 1px solid #D5D5D5;width: 100%;height: 100%;background: #F5F4F4"></div>
+            <div class="inputs"><input type="text" placeholder="Email" style="border: none;border-bottom: 1px solid #D5D5D5;width: 100%;height: 100%;background: #F5F4F4"></div>
+            <div class="inputs"><input type="text" placeholder="留言内容" style="border: none;border-bottom: 1px solid #D5D5D5;width: 100%;height: 100%;background: #F5F4F4"></div>
+        </div>
+        <div class="tijiao">提交信息</div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(`.box`).fullpage({
+        continuousVertical: true,
+        'navigation': true,
+        scrollingSpeed: 1500,
+        slidesNavigation: true,
+        loopHorizontal: true,
+        continuousVertical: true,
+//        afterLoad:function (val,index) {
+//            if (index == 1){
+//                $('.wel').animate({opacity:1})
+//            }
+//        },
+//        onLeave: function (index, direction) {
+//            if(index == 1){
+//                $('.wel').animate({opacity:0})
+//            }
+//        }
+    })
+
+    var t;
+    $('.add1').hover(function () {
+        t=setTimeout(function () {
+            $(".m1").animate({width:'100%'},500)
+        },300)
+        },function () {
+            clearTimeout(t)
+            $(".m1").animate({width:0},1000)
+    })
+    $('.add2').hover(function () {
+        t=setTimeout(function () {
+            $(".m2").animate({width:'100%'},500)
+        },300)
+    },function () {
+        clearTimeout(t)
+        $(".m2").animate({width:0},1000)
+    })
+    $('.add3').hover(function () {
+        t=setTimeout(function () {
+            $(".m3").animate({width:'100%'},500)
+        },300)
+    },function () {
+        clearTimeout(t)
+        $(".m3").animate({width:0},1000)
+    })
+</script>
